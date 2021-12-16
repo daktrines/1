@@ -39,13 +39,23 @@ namespace _1
         
         private void Start_Click(object sender, RoutedEventArgs e)
         {
-            int k = Convert.ToInt32(ZnK.Text); //Вводим к
-            Class1.Start(k, out string str, out int sum, out int kol); //используем функцию
-            Zn.Text = str; //вывод сгенерированных чисел
-            Sum.Text = Convert.ToString(sum); //вывод sum
-            Kol.Text = Convert.ToString(kol); //вывод kol
+            try
+            {
+                int k = Convert.ToInt32(ZnK.Text); //Вводим к
+                Class1.Start(k, out string str, out int sum, out int kol); //используем функцию
+                Zn.Text = str; //вывод сгенерированных чисел
+                Sum.Text = Convert.ToString(sum); //вывод sum
+                Kol.Text = Convert.ToString(kol); //вывод kol
+            }
+            catch
+            {
+                MessageBox.Show("Неверные данные!", "Ошибка", MessageBoxButton.OK,
+                  MessageBoxImage.Error);
+                ZnK.Focus();
+            }
         }
-        private void Drzn(object sender, TextChangedEventArgs e)
+
+        private void ZnK_TextChanged(object sender, TextChangedEventArgs e)
         {
             Zn.Text = null;
             Sum.Text = null;
